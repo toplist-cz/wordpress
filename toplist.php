@@ -221,11 +221,11 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo ':&nbsp;</label></td>';
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value=""'.($toplist_logo==''?' checked':'').' /></td><td><img src="https://i.toplist.cz/img/logo.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
-		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="1"'.($toplist_logo=='1'?' checked':'').' /></td><td style="background-color: black;"><img src="https://i.toplist.cz/img/logo1.gif" width="88" height="31" /></td>';
+		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="1"'.($toplist_logo=='1'?' checked':'').' /></td><td style="background-color: black;"><img src="https://www.toplist.cz/img/logo1.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
-		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="2"'.($toplist_logo=='2'?' checked':'').' /></td><td><img src="https://i.toplist.cz/img/logo2.gif" width="88" height="31" /></td>';
+		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="2"'.($toplist_logo=='2'?' checked':'').' /></td><td><img src="https://www.toplist.cz/img/logo2.gif" width="88" height="31" /></td>';
 		echo "</tr><tr><td></td>";
-		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="3"'.($toplist_logo=='3'?' checked':'').' /></td><td><img src="https://i.toplist.cz/img/logo3.gif" width="88" height="31" /></td>';
+		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="3"'.($toplist_logo=='3'?' checked':'').' /></td><td><img src="https://www.toplist.cz/img/logo3.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="blank"'.($toplist_logo=='blank'?' checked':'').' /></td><td style="text-align: center">'.__('nothing', 'toplistcz').'</td>';
 		echo '<td>&nbsp;</td>';
@@ -272,7 +272,7 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo '</label><br />';
 		echo '<label for="' . $this->get_field_name('seccode') . '">' . __('Security code:', 'toplistcz') . '</label> ';
 		echo '<input id="' . $this->get_field_id('seccode') . '" name="' . $this->get_field_name('seccode') . '" type="number" min="0" max="200" value="' . $toplist_seccode . '" />';
-		echo '[<a href="https://wiki.toplist.cz/Tipy_a_triky#4" target="_blank"><span style="font-size:x-small">' . __('what is this?', 'toplistcz') . '</span></a>]';
+		echo '[<a href="https://o.toplist.cz/dokumentace/tipy-a-triky/#bezpecnostni-kod" target="_blank"><span style="font-size:x-small">' . __('what is this?', 'toplistcz') . '</span></a>]';
 		echo '</p><hr />';
 
 		// hyperlink settings
