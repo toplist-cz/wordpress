@@ -1,0 +1,35 @@
+﻿* dashboard widget
+  * displaying content via ajax
+    * handling ajax errors
+  * password entering and storing (Ajax)
+    * when bad password entered, highlight graphically
+    * when good password entered, do slideup, slidedown;
+  * loading statistics from toplist.cz/sk, displaying them
+    * check all the statistics including the profi statistics by id = 1
+  * config of widget
+    * select different statistics to show
+    * tiles, two widths, two heights
+    * jQuery sortable
+    * when customizing, check if profi service, whether to offer advanced options
+    * admin can lower the level of user role to display the dashboard widget
+      * test on users with different levels
+  * link to full statistics
+    * security!!! pasword reveal danger!!!
+    * maybe proxy reading
+  * i18n
+    * localize js
+  * Toplist.sk everywhere
+    * widget caption
+    * source server
+    * test!
+  * caching the content
+  * updating the content on timer
+  * two halves -- first one displayed always, second one by pressing button
+  * tables show only first 5/10 rows, button to expand to full table
+  * with click on previous day(s) in graphs or tables, reload (via ajax) the stats for that day
+* update monitoring admin users
+  * current_user_can('level_X') deprecated
+* minimize styles and scripts
+* replace 'toplist' or 'TopList' or 'Toplist' by 'TOPlist'
+  * i18n
+* add support for "bezpečnostní kód" seed, viz http://wiki.toplist.cz/Tipy_a_triky#4
