@@ -22,7 +22,7 @@ For English, see below.
 
 <strong>Czech:</strong>
 
-1.	Pokud ještě nemáte svou registraci na serveru toplist.cz, pak je zapotřebí se <a href="https://www.toplist.cz/edit/?a=e" target="_blank">zaregistrovat</a> a získat ID pro své webové stránky.
+1.	Pokud ještě nemáte svou registraci na serveru toplist.cz, pak je zapotřebí se <a href="https://www.toplist.cz/register/" target="_blank">zaregistrovat</a> a získat ID pro své webové stránky.
 2.	Nahrajte kompletní adresář pluginu do wp-content/plugins.
 3.	Aktivujte plugin TopList.cz v administraci plug-inů.
 4.	Přidejte widget TopList.cz v administraci Vzhled->Widgety do postranního panelu.
@@ -30,7 +30,7 @@ For English, see below.
 
 <strong>English:</strong>
 
-1.	If you don't have a toplist.cz server registration yet, you have to <a href="https://www.toplist.cz/edit/?a=e" target="_blank">registrate</a> and receive ID number for your web presentation.
+1.	If you don't have a toplist.cz server registration yet, you have to <a href="https://www.toplist.cz/register/" target="_blank">registrate</a> and receive ID number for your web presentation.
 2.	Upload the full plugin directory into your wp-content/plugins directory.
 3.	Activate the plugin in plugins administration.
 4.	Add widget TopList.cz into your sidebar in Widgets administration.
