@@ -67,7 +67,8 @@ class TopList_CZ_Widget extends WP_Widget {
 				'pagetitle'  => '',
 				'seccode'    => 0,
 				'admindsbl'  => '0',
-				'adminlvl'   => 'administrator'
+				'adminlvl'   => 'administrator',
+				'serverkey'  => ''
 			)), EXTR_PREFIX_ALL, 'toplist');
 
 		if (is_numeric($toplist_adminlvl))
@@ -169,7 +170,8 @@ class TopList_CZ_Widget extends WP_Widget {
 				'seccode',
 				'admindsbl',
 				'adminlvl',
-				'display'
+				'display',
+				'serverkey'
 			) as $option) {
 				$instance[$option] = strip_tags(stripslashes($new_instance[$option]));
 		}
@@ -193,7 +195,8 @@ class TopList_CZ_Widget extends WP_Widget {
 				'seccode'    => 0,
 				'admindsbl'  => '0',
 				'adminlvl'   => 'administrator',
-				'display'    => 'default'
+				'display'    => 'default',
+				'serverkey'  => ''
 			)), EXTR_PREFIX_ALL, 'toplist');
 		if (is_numeric($toplist_adminlvl))
 			$toplist_adminlvl = self::user_level_to_role($toplist_adminlvl);
@@ -212,14 +215,14 @@ class TopList_CZ_Widget extends WP_Widget {
 
 		// toplist ID input
 		echo '<p><label for="' . $this->get_field_name('id') . '">'.str_replace('toplist', 'TOPlist', $toplist_server).' ID: </label><input id="' . $this->get_field_id('id') . '" name="' . $this->get_field_name('id') . '" type="text" value="'.intval($toplist_id).'" size="7" /><input id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="hidden" value="'.$toplist_title.'" /></p>'."\n";
-		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('Your ID on <a href="https://www.%server%" target="_blank">www.%server%</a> server. If you don\'t have one yet, please <a href="https://www.%server%/edit/?a=e" target="_blank">register</a>.', 'toplistcz')).'</em></p><hr />';
+		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('Your ID on <a href="https://www.%server%" target="_blank">www.%server%</a> server. If you don\'t have one yet, please <a href="https://www.%server%/register/" target="_blank">register</a>.', 'toplistcz')).'</em></p><hr />';
 
 		// logo selection
 		echo '<table><tr>';
 		echo '<td><label for="' . $this->get_field_name('logo') . '">';
 		_e('Logo', 'toplistcz');
 		echo ':&nbsp;</label></td>';
-		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value=""'.($toplist_logo==''?' checked':'').' /></td><td><img src="https://i.toplist.cz/img/logo.gif" width="88" height="31" /></td>';
+		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value=""'.($toplist_logo==''?' checked':'').' /></td><td><img src="https://www.toplist.cz/img/logo.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="1"'.($toplist_logo=='1'?' checked':'').' /></td><td style="background-color: black;"><img src="https://www.toplist.cz/img/logo1.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
@@ -235,7 +238,7 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo '<td>&nbsp;</td>';
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="btn"'.($toplist_logo=='btn'?' checked':'').' /></td><td style="text-align: center"><img src="https://www.'.$toplist_server.'/images/counter.asp?a=btn&amp;s=722890" width="80" height="15" /></td>';
 		echo '<td>&nbsp;</td>';
-		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="s"'.($toplist_logo=='s'?' checked':'').' /></td><td style="text-align: center"><img src="https://i.'.$toplist_server.'/img/sqr.gif" width="14" height="14" /></td>';
+		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="s"'.($toplist_logo=='s'?' checked':'').' /></td><td style="text-align: center"><img src="https://www.'.$toplist_server.'/img/sqr.gif" width="14" height="14" /></td>';
 		echo "</tr><tr><td></td>";
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="mc"'.($toplist_logo=='mc'?' checked':'').' /></td><td><img src="https://www.'.$toplist_server.'/images/counter.asp?a=mc&amp;ID=1" width="88" height="60" /></td>';
 		echo '<td>&nbsp;</td>';
@@ -285,6 +288,10 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo '<td><input id="' . $this->get_field_id('link') . '" name="' . $this->get_field_name('link') . '" type="radio" type="radio" value="stats"'.($toplist_link=='stats'?' checked':'').'>'.__('Detailed statistics', 'toplistcz').'</input></td>';
 		echo '</tr></table>';
 		echo '<hr />';
+
+		// Statistics RESP API password
+		echo '<p><label for="' . $this->get_field_name('serverkey') . '">'.__('Statistics password', 'toplistcz').': </label><input id="' . $this->get_field_id('serverkey') . '" name="' . $this->get_field_name('serverkey') . '" type="text" value="'.$toplist_serverkey.'" size="7" /></p>'."\n";
+		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('To show statistics right in Wordpress dashboard enter <a href="https://profi.%server%/serverKey" target="_blank">one time password</a>.', 'toplistcz')).'</em></p><hr />';
 
 		// tracking admin users
 		echo '<table><tr><td width="190px"><label for="' . $this->get_field_name('admindsbl') . '">';
@@ -768,20 +775,11 @@ class TopList_CZ_Widget extends WP_Widget {
 	const _not_found_string = '%1$s NOT FOUND';
 	private function get_site_name($id, $server = 'toplist.cz') {
 		$return = $id;
-		$url = "https://www.$server/stat/" . $id;
+		$url = "https://profi.$server/api/v1/site/" . $id;
 		$html = wp_remote_fopen($url);
 		if($html !== false) {
-			$dom = new DOMDocument();
-			libxml_use_internal_errors(true);
-			if ($dom->loadHTML($html) !== false) {
-				if ($dom->getElementById('info') == NULL)
-					$return = sprintf(__(self::_not_found_string, 'toplistcz'), $id);
-				else {
-					$xpath = new DOMXPath($dom);
-					$return = $id . " (" . $xpath->query("//table[@id='info']/tr[2]/td")->item(0)->textContent . ")";
-				}
-			}
-			libxml_clear_errors();
+			$json = json_decode($html, true);
+			return $json['title'];
 		}
 		return $return;
 	}
