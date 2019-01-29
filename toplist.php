@@ -358,6 +358,7 @@ class TopList_CZ_Widget extends WP_Widget {
 		if ($hook != 'index.php')
 			return;
 		$suffix  = '.min';
+		$suffix  = '';
 		wp_enqueue_style('toplist-cz-admin', plugins_url("/css/admin$suffix.css", __FILE__));
 		wp_register_script('toplist-cz-admin', plugins_url("/js/admin$suffix.js", __FILE__), array('jquery'), false, true);
 		wp_register_script('flot', plugins_url("/js/jquery.flot.min.js", __FILE__), array('jquery'), '0.8.3', true);
@@ -479,11 +480,11 @@ class TopList_CZ_Widget extends WP_Widget {
 	private function get_toplist_stats_html($day = FALSE) {
 		$config = $this->config();
 
-		$url = "https://www.{$config['server']}/stat/";
+		$url = "https://profi.{$config['server']}/api/v1/stat/".$config['id']."/visit/month";
 		$http = new WP_Http();
 		$http_result = $http->request($url, array(
-				'method' => 'POST',
-				'body'   => self::toplist_request_fields($day)
+				'method' => 'GET',
+				'headers'=> 'serverKey: '.$config['serverkey']
 			));
 
 		if (is_wp_error($http_result))
@@ -587,27 +588,6 @@ class TopList_CZ_Widget extends WP_Widget {
 	private function dashboard_html($stats = false) {
 		$return = ''
 						. '<data id="toplist_stats" value="' . base64_encode(json_encode($stats)) . '"></data>'
-						// graf návštěvy za den
-						. '<div id="navstevy-za-den">'
-						. '<h4>' . $stats['navstevy_za_den']['label'] . '</h4>'
-						. '<div class="graph"><span class="spinner"></span></div>'
-						. '</div>'
-						// vstupní stránky
-						. '<div id="vstupni-stranky" class="half-width">'
-						. '<h4>' . $stats['vstupni_stranky_label'] . '</h4>'
-						. '<table class="toplist-top">'
-						. '<thead><tr><th>' . ( $stats['toplist_server'] == "toplist.sk" ? "Koľko" : "Kolik" ) . '</th><th>Adresa</th></tr></thead>'
-						. '<tbody>' . self::table_2_columns($stats["vstupni_stranky"]) . '</tbody>'
-						. '</table>'
-						. '</div>'
-						// návštěvy podle domén
-						. '<div id="navstevy-podle-domen" class="half-width">'
-						. '<h4>' . $stats['domeny_label'] . '</h4>'
-						. '<table class="toplist-top">'
-						. '<thead><tr><th>' . ( $stats['toplist_server'] == "toplist.sk" ? "Koľko" : "Kolik" ) . '</th><th>Doména</th></tr></thead>'
-						. '<tbody>' . self::table_2_columns($stats["domeny"]) . '</tbody>'
-						. '</table>'
-						. '</div>'
 						// graf návštěvy za měsíc
 						. '<div id="navstevy-za-mesic">'
 						. '<h4>' . $stats['navstevy_za_mesic']['label'] . '</h4>'
@@ -661,6 +641,18 @@ class TopList_CZ_Widget extends WP_Widget {
 	
 	private function extract_toplist_stats($html) {
 		$return = array();
+		$return['navstevy_za_mesic'] = array();
+		$return['navstevy_za_mesic']['mesic']     = 'leden';
+		$return['navstevy_za_mesic']['label']     = 'Návštěvy za měsíc:';
+		$data = json_decode($html, true);
+		//$return['navstevy_za_mesic']['label']     = print_r($data);
+		$return['navstevy_za_mesic']['navstevy']  = array();
+		$return['navstevy_za_mesic']['zhlednuti'] = array();
+		foreach ($data as $i => $value) {
+			$return['navstevy_za_mesic']['navstevy'][$i+1] = $value['visit'];
+			$return['navstevy_za_mesic']['zhlednuti'][$i+1] = $value['hit'];
+		}
+		return $return;
 		$dom = new DOMDocument();
 		libxml_use_internal_errors(true);
 		if ($dom->loadHTML($html) !== false) {
