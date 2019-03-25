@@ -1,4 +1,4 @@
-=== TopList.cz ===
+<h1>TopList.cz</h1>
 Contributors: honza.skypala
 Donate link: http://www.honza.info
 Tags: toplist, toplist.cz, web, pages, analytics, statistics, widget
@@ -8,7 +8,7 @@ Stable tag: 4.2
 
 TopList.cz is a popular web analytics service in Czech Republic. This plugin is for easy integration of your WordPress blog into this service.
 
-== Description ==
+<h2>Description</h2>
 
 For English, please see below.
   
@@ -16,7 +16,7 @@ For English, please see below.
 
 <strong>English:</strong> This plug-in allows for easy integration of web statistics service TopList.cz into your blog run by WordPress. Plug-in adds a new widget (called TopList.cz) to WordPress and by placing the widget on your page (sidebar) you integrate TopList.cz into your blog. It is common to put the code for such service into the theme template, but my solution utilizing it as a widget allows to run the statistics regardless of the theme used - you can switch the themes and it works all the time. The widget contains complete configuration (displayed icon, detailed analytics etc.).
 
-== Installation ==
+<h2>Installation</h2>
 
 For English, see below.
 
@@ -36,7 +36,7 @@ For English, see below.
 4.	Add widget TopList.cz into your sidebar in Widgets administration.
 5.	In widget configuration, enter your ID number for toplist.cz server; eventually you can change other options. Save changes.
 
-== Frequently Asked Questions ==
+<h2>Frequently Asked Questions</h2>
 
 <strong>Czech:</strong>
 
@@ -62,49 +62,43 @@ eventually for hiding the widget:
 
 <code>.widget_toplist_cz {display:none}</code>
 
-== Screenshots ==
+<h2>Screenshots</h2>
 
 1. Konfigurace widgetu / widget configuration
 2. Dashboard widget
 
-== Changelog ==
+<h2>Changelog</h2>
 
-= 4.2 =
-* Access to toplist.cz changed from HTTP to HTTPS
-= 4.1 =
-* Added totals to the graph legends in dashboard widget
-* Support for TopList security code
-* Automatic (ajax) reload of dashboard widget every 15 minutes
-= 4.0.1 =
+<h3>4.2</h3>
+
+*  Access to toplist.cz changed from HTTP to HTTPS
+<h3>4.1</h3>
+
+*  Added totals to the graph legends in dashboard widget
+
+*  Support for TopList security code
+
+*  Automatic (ajax) reload of dashboard widget every 15 minutes
+<h3>4.0.1</h3>
+
 * Bug fixes
-= 4.0 =
+<h3>4.0</h3>
+
 * Added dashboard widget, which displays the statistics retrieved from toplist.cz/sk
-= 3.2 =
+<h3>3.2</h3>
+
 * Added option for centering or hiding the widget.
-= 3.1 =
+<h3>3.1</h3>
+
 * Added option for filtering WordPress admins out of the statistics.
-= 3.0 =
+<h3>3.0</h3>
+
 * Recoded for WordPress 2.8 API.
-= 2.0 =
+<h3>2.0</h3>
+
 * Added support for toplist.sk server.
+
 * Link can lead to detailed statistics now.
-= 1.0 =
+<h3>1.0</h3>
+
 * Initial release.
-
-== License ==
-
-WTFPL License 2.0 applies
-
-<code>           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-                   Version 2, December 2004
-
-Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
-
-Everyone is permitted to copy and distribute verbatim or modified
-copies of this license document, and changing it is allowed as long
-as the name is changed.
-
-           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-  TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
- 0. You just DO WHAT THE FUCK YOU WANT TO.</code>
