@@ -226,7 +226,7 @@ jQuery(document).ready(function($){
   function draw_graphs() {
     if (!$('#toplist_cz_dashboard').hasClass("closed")) {
       var data = JSON.parse(window.atob($("#toplist_cz_dashboard #toplist_stats").attr("value")));
-      flot_navstevy_graph(data.navstevy_za_den, $("#navstevy-za-den .graph"));
+      //flot_navstevy_graph(data.navstevy_za_den, $("#navstevy-za-den .graph"));
       flot_navstevy_graph(data.navstevy_za_mesic, $("#navstevy-za-mesic .graph"));
       //table_2_columns(response.vstupni_stranky, $("#vstupni-stranky table"));
       //table_2_columns(response.domeny, $("#navstevy-podle-domen table"));

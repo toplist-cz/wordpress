@@ -67,7 +67,8 @@ class TopList_CZ_Widget extends WP_Widget {
 				'pagetitle'  => '',
 				'seccode'    => 0,
 				'admindsbl'  => '0',
-				'adminlvl'   => 'administrator'
+				'adminlvl'   => 'administrator',
+				'serverkey'  => ''
 			)), EXTR_PREFIX_ALL, 'toplist');
 
 		if (is_numeric($toplist_adminlvl))
@@ -169,7 +170,8 @@ class TopList_CZ_Widget extends WP_Widget {
 				'seccode',
 				'admindsbl',
 				'adminlvl',
-				'display'
+				'display',
+				'serverkey'
 			) as $option) {
 				$instance[$option] = strip_tags(stripslashes($new_instance[$option]));
 		}
@@ -193,7 +195,8 @@ class TopList_CZ_Widget extends WP_Widget {
 				'seccode'    => 0,
 				'admindsbl'  => '0',
 				'adminlvl'   => 'administrator',
-				'display'    => 'default'
+				'display'    => 'default',
+				'serverkey'  => ''
 			)), EXTR_PREFIX_ALL, 'toplist');
 		if (is_numeric($toplist_adminlvl))
 			$toplist_adminlvl = self::user_level_to_role($toplist_adminlvl);
@@ -212,14 +215,14 @@ class TopList_CZ_Widget extends WP_Widget {
 
 		// toplist ID input
 		echo '<p><label for="' . $this->get_field_name('id') . '">'.str_replace('toplist', 'TOPlist', $toplist_server).' ID: </label><input id="' . $this->get_field_id('id') . '" name="' . $this->get_field_name('id') . '" type="text" value="'.intval($toplist_id).'" size="7" /><input id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="hidden" value="'.$toplist_title.'" /></p>'."\n";
-		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('Your ID on <a href="https://www.%server%" target="_blank">www.%server%</a> server. If you don\'t have one yet, please <a href="https://www.%server%/edit/?a=e" target="_blank">register</a>.', 'toplistcz')).'</em></p><hr />';
+		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('Your ID on <a href="https://www.%server%" target="_blank">www.%server%</a> server. If you don\'t have one yet, please <a href="https://www.%server%/register/" target="_blank">register</a>.', 'toplistcz')).'</em></p><hr />';
 
 		// logo selection
 		echo '<table><tr>';
 		echo '<td><label for="' . $this->get_field_name('logo') . '">';
 		_e('Logo', 'toplistcz');
 		echo ':&nbsp;</label></td>';
-		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value=""'.($toplist_logo==''?' checked':'').' /></td><td><img src="https://i.toplist.cz/img/logo.gif" width="88" height="31" /></td>';
+		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value=""'.($toplist_logo==''?' checked':'').' /></td><td><img src="https://www.toplist.cz/img/logo.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="1"'.($toplist_logo=='1'?' checked':'').' /></td><td style="background-color: black;"><img src="https://www.toplist.cz/img/logo1.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
@@ -235,7 +238,7 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo '<td>&nbsp;</td>';
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="btn"'.($toplist_logo=='btn'?' checked':'').' /></td><td style="text-align: center"><img src="https://www.'.$toplist_server.'/images/counter.asp?a=btn&amp;s=722890" width="80" height="15" /></td>';
 		echo '<td>&nbsp;</td>';
-		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="s"'.($toplist_logo=='s'?' checked':'').' /></td><td style="text-align: center"><img src="https://i.'.$toplist_server.'/img/sqr.gif" width="14" height="14" /></td>';
+		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="s"'.($toplist_logo=='s'?' checked':'').' /></td><td style="text-align: center"><img src="https://www.'.$toplist_server.'/img/sqr.gif" width="14" height="14" /></td>';
 		echo "</tr><tr><td></td>";
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="mc"'.($toplist_logo=='mc'?' checked':'').' /></td><td><img src="https://www.'.$toplist_server.'/images/counter.asp?a=mc&amp;ID=1" width="88" height="60" /></td>';
 		echo '<td>&nbsp;</td>';
@@ -285,6 +288,10 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo '<td><input id="' . $this->get_field_id('link') . '" name="' . $this->get_field_name('link') . '" type="radio" type="radio" value="stats"'.($toplist_link=='stats'?' checked':'').'>'.__('Detailed statistics', 'toplistcz').'</input></td>';
 		echo '</tr></table>';
 		echo '<hr />';
+
+		// Statistics RESP API password
+		echo '<p><label for="' . $this->get_field_name('serverkey') . '">'.__('Statistics password', 'toplistcz').': </label><input id="' . $this->get_field_id('serverkey') . '" name="' . $this->get_field_name('serverkey') . '" type="text" value="'.$toplist_serverkey.'" size="7" /></p>'."\n";
+		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('To show statistics right in Wordpress dashboard enter <a href="https://profi.%server%/serverKey" target="_blank">one time password</a>.', 'toplistcz')).'</em></p><hr />';
 
 		// tracking admin users
 		echo '<table><tr><td width="190px"><label for="' . $this->get_field_name('admindsbl') . '">';
@@ -351,6 +358,7 @@ class TopList_CZ_Widget extends WP_Widget {
 		if ($hook != 'index.php')
 			return;
 		$suffix  = '.min';
+		$suffix  = '';
 		wp_enqueue_style('toplist-cz-admin', plugins_url("/css/admin$suffix.css", __FILE__));
 		wp_register_script('toplist-cz-admin', plugins_url("/js/admin$suffix.js", __FILE__), array('jquery'), false, true);
 		wp_register_script('flot', plugins_url("/js/jquery.flot.min.js", __FILE__), array('jquery'), '0.8.3', true);
@@ -472,11 +480,11 @@ class TopList_CZ_Widget extends WP_Widget {
 	private function get_toplist_stats_html($day = FALSE) {
 		$config = $this->config();
 
-		$url = "https://www.{$config['server']}/stat/";
+		$url = "https://profi.{$config['server']}/api/v1/stat/".$config['id']."/visit/month";
 		$http = new WP_Http();
 		$http_result = $http->request($url, array(
-				'method' => 'POST',
-				'body'   => self::toplist_request_fields($day)
+				'method' => 'GET',
+				'headers'=> 'serverKey: '.$config['serverkey']
 			));
 
 		if (is_wp_error($http_result))
@@ -580,27 +588,6 @@ class TopList_CZ_Widget extends WP_Widget {
 	private function dashboard_html($stats = false) {
 		$return = ''
 						. '<data id="toplist_stats" value="' . base64_encode(json_encode($stats)) . '"></data>'
-						// graf návštěvy za den
-						. '<div id="navstevy-za-den">'
-						. '<h4>' . $stats['navstevy_za_den']['label'] . '</h4>'
-						. '<div class="graph"><span class="spinner"></span></div>'
-						. '</div>'
-						// vstupní stránky
-						. '<div id="vstupni-stranky" class="half-width">'
-						. '<h4>' . $stats['vstupni_stranky_label'] . '</h4>'
-						. '<table class="toplist-top">'
-						. '<thead><tr><th>' . ( $stats['toplist_server'] == "toplist.sk" ? "Koľko" : "Kolik" ) . '</th><th>Adresa</th></tr></thead>'
-						. '<tbody>' . self::table_2_columns($stats["vstupni_stranky"]) . '</tbody>'
-						. '</table>'
-						. '</div>'
-						// návštěvy podle domén
-						. '<div id="navstevy-podle-domen" class="half-width">'
-						. '<h4>' . $stats['domeny_label'] . '</h4>'
-						. '<table class="toplist-top">'
-						. '<thead><tr><th>' . ( $stats['toplist_server'] == "toplist.sk" ? "Koľko" : "Kolik" ) . '</th><th>Doména</th></tr></thead>'
-						. '<tbody>' . self::table_2_columns($stats["domeny"]) . '</tbody>'
-						. '</table>'
-						. '</div>'
 						// graf návštěvy za měsíc
 						. '<div id="navstevy-za-mesic">'
 						. '<h4>' . $stats['navstevy_za_mesic']['label'] . '</h4>'
@@ -654,6 +641,18 @@ class TopList_CZ_Widget extends WP_Widget {
 	
 	private function extract_toplist_stats($html) {
 		$return = array();
+		$return['navstevy_za_mesic'] = array();
+		$return['navstevy_za_mesic']['mesic']     = 'leden';
+		$return['navstevy_za_mesic']['label']     = 'Návštěvy za měsíc:';
+		$data = json_decode($html, true);
+		//$return['navstevy_za_mesic']['label']     = print_r($data);
+		$return['navstevy_za_mesic']['navstevy']  = array();
+		$return['navstevy_za_mesic']['zhlednuti'] = array();
+		foreach ($data as $i => $value) {
+			$return['navstevy_za_mesic']['navstevy'][$i+1] = $value['visit'];
+			$return['navstevy_za_mesic']['zhlednuti'][$i+1] = $value['hit'];
+		}
+		return $return;
 		$dom = new DOMDocument();
 		libxml_use_internal_errors(true);
 		if ($dom->loadHTML($html) !== false) {
@@ -768,20 +767,11 @@ class TopList_CZ_Widget extends WP_Widget {
 	const _not_found_string = '%1$s NOT FOUND';
 	private function get_site_name($id, $server = 'toplist.cz') {
 		$return = $id;
-		$url = "https://www.$server/stat/" . $id;
+		$url = "https://profi.$server/api/v1/site/" . $id;
 		$html = wp_remote_fopen($url);
 		if($html !== false) {
-			$dom = new DOMDocument();
-			libxml_use_internal_errors(true);
-			if ($dom->loadHTML($html) !== false) {
-				if ($dom->getElementById('info') == NULL)
-					$return = sprintf(__(self::_not_found_string, 'toplistcz'), $id);
-				else {
-					$xpath = new DOMXPath($dom);
-					$return = $id . " (" . $xpath->query("//table[@id='info']/tr[2]/td")->item(0)->textContent . ")";
-				}
-			}
-			libxml_clear_errors();
+			$json = json_decode($html, true);
+			return $json['title'];
 		}
 		return $return;
 	}
