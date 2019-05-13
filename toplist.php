@@ -1,12 +1,11 @@
 <?php
 /*
-Plugin Name: TopList.cz
-Plugin URI: https://wordpress.org/plugins/toplistcz/
+Plugin Name: TOPlist
 Description: Widget for easy integration of TopList.cz, popular Czech website visit statistics server.
-Version: 4.2
-Author: Honza Skypala
-Author URI: http://www.honza.info
-License: WTFPL license applies
+Version: 5.0
+Author: TOPlist s.r.o., Honza Skypala
+Author URI: https://www.toplist.cz http://www.honza.info
+License: MIT license
 */
 
 if(!class_exists('WP_Http'))
