@@ -1,10 +1,11 @@
-=== TopList.cz ===
-Contributors: honza.skypala
-Donate link: http://www.honza.info
+=== TOPlist ===
+Contributors: toplist, honza.skypala
+Donate link: https://www.toplist.cz, http://www.honza.info
 Tags: toplist, toplist.cz, web, pages, analytics, statistics, widget
 Requires at least: 4.3
-Tested up to: 4.3
-Stable tag: 4.1
+Requires PHP: 5.2
+Tested up to: 5.1
+Stable tag: 5.0
 
 TopList.cz is a popular web analytics service in Czech Republic. This plugin is for easy integration of your WordPress blog into this service.
 
@@ -67,8 +68,16 @@ eventually for hiding the widget:
 1. Konfigurace widgetu / widget configuration
 2. Dashboard widget
 
+== Upgrade Notice ==
+= 5.0 =
+* Using TOPlist REST API (https://profi.toplist.cz/api/) instead of parsing web pages (which didn't work because of web changes)
+
 == Changelog ==
 
+= 5.0 =
+* Using TOPlist REST API (https://profi.toplist.cz/api/) instead of parsing web pages (which didn't work because of web changes)
+* licence changed to MIT
+* plugin got official support from TOPlist s.r.o. (company behind TOPlist.cz|sk|eu site)
 = 4.1 =
 * Added totals to the graph legends in dashboard widget
 * Support for TopList security code
@@ -89,21 +98,29 @@ eventually for hiding the widget:
 = 1.0 =
 * Initial release.
 
+== Credits ==
+* Thanx to [Honza Skypala](http://www.honza.info) for many years of contribution to this plugin
+
 == License ==
 
-WTFPL License 2.0 applies
+MIT License
 
-<code>           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-                   Version 2, December 2004
+Copyright (c) 2019 toplist
 
-Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Everyone is permitted to copy and distribute verbatim or modified
-copies of this license document, and changing it is allowed as long
-as the name is changed.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-  TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
- 0. You just DO WHAT THE FUCK YOU WANT TO.</code>
-
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
