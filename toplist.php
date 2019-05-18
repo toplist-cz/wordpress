@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: TOPlist
-Description: Widget for easy integration of TopList.cz, popular Czech website visit statistics server.
+Description: Widget for easy integration of TOPlist.cz, popular Czech website visit statistics server.
 Version: 5.0
 Author: TOPlist s.r.o., Honza Skypala
-Author URI: https://www.toplist.cz http://www.honza.info
+Author URI: https://o.toplist.cz/dokumentace/
 License: MIT license
 */
 

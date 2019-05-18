@@ -1,21 +1,21 @@
 === TOPlist ===
 Contributors: toplist, honza.skypala
-Donate link: https://www.toplist.cz, http://www.honza.info
+Donate link: https://www.toplist.cz
 Tags: toplist, toplist.cz, web, pages, analytics, statistics, widget
 Requires at least: 4.3
 Requires PHP: 5.2
 Tested up to: 5.1
 Stable tag: 5.0
 
-TopList.cz is a popular web analytics service in Czech Republic. This plugin is for easy integration of your WordPress blog into this service.
+TOPlist.cz is a popular web analytics service in Czech Republic. This plugin is for easy integration of your WordPress blog into this service.
 
 == Description ==
 
 For English, please see below.
   
-<strong>Czech:</strong> Tento plug-in Vám zajistí snadné použití statistické služby TopList.cz ve vašem blogu provozovaném na systému WordPress. Plug-in přidá nový widget (nazvaný TopList.cz) a jeho umístěním na stránku (do sidebaru) zajistíte automatické používání služby. Autoři webových stránek běžně zařazují kód pro používání služby TopList.cz do šablony vzhledu - ovšem moje řešení pomocí pluginu/widgetu zajistí používání služby bez ohledu na použitou šablonu - můžete šablony vzhledu přepínat dle libosti a statistiky jsou stále zajištěny. K dispozici je plná konfigurace služby (např. vzhled ikony, detaily sledování apod.).
+<strong>Czech:</strong> Tento plug-in Vám zajistí snadné použití statistické služby TOPlist.cz ve vašem blogu provozovaném na systému WordPress. Plug-in přidá nový widget (nazvaný TOPlist) a jeho umístěním na stránku (do sidebaru) zajistíte automatické používání služby. Autoři webových stránek běžně zařazují kód pro používání služby TopList.cz do šablony vzhledu - ovšem moje řešení pomocí pluginu/widgetu zajistí používání služby bez ohledu na použitou šablonu - můžete šablony vzhledu přepínat dle libosti a statistiky jsou stále zajištěny. K dispozici je plná konfigurace služby (např. vzhled ikony, detaily sledování apod.).
 
-<strong>English:</strong> This plug-in allows for easy integration of web statistics service TopList.cz into your blog run by WordPress. Plug-in adds a new widget (called TopList.cz) to WordPress and by placing the widget on your page (sidebar) you integrate TopList.cz into your blog. It is common to put the code for such service into the theme template, but my solution utilizing it as a widget allows to run the statistics regardless of the theme used - you can switch the themes and it works all the time. The widget contains complete configuration (displayed icon, detailed analytics etc.).
+<strong>English:</strong> This plug-in allows for easy integration of web statistics service TOPlist.cz into your blog run by WordPress. Plug-in adds a new widget (called TOPlist) to WordPress and by placing the widget on your page (sidebar) you integrate TopList.cz into your blog. It is common to put the code for such service into the theme template, but my solution utilizing it as a widget allows to run the statistics regardless of the theme used - you can switch the themes and it works all the time. The widget contains complete configuration (displayed icon, detailed analytics etc.).
 
 == Installation ==
 
@@ -23,18 +23,18 @@ For English, see below.
 
 <strong>Czech:</strong>
 
-1.	Pokud ještě nemáte svou registraci na serveru toplist.cz, pak je zapotřebí se <a href="http://www.toplist.cz/edit/?a=e" target="_blank">zaregistrovat</a> a získat ID pro své webové stránky.
+1.	Pokud ještě nemáte svou registraci na serveru toplist.cz, pak je zapotřebí se <a href="https://www.toplist.cz/register/" target="_blank">zaregistrovat</a> a získat ID pro své webové stránky.
 2.	Nahrajte kompletní adresář pluginu do wp-content/plugins.
-3.	Aktivujte plugin TopList.cz v administraci plug-inů.
-4.	Přidejte widget TopList.cz v administraci Vzhled->Widgety do postranního panelu.
+3.	Aktivujte plugin TOPlist v administraci plug-inů.
+4.	Přidejte widget TOPlist v administraci Vzhled->Widgety do postranního panelu.
 5.	V konfiguraci widgetu zadejte své ID pro server toplist.cz, případně zvolte další volby. Uložte změny.
 
 <strong>English:</strong>
 
-1.	If you don't have a toplist.cz server registration yet, you have to <a href="http://www.toplist.cz/edit/?a=e" target="_blank">registrate</a> and receive ID number for your web presentation.
+1.	If you don't have a toplist.cz server registration yet, you have to <a href="https://www.toplist.cz/register/" target="_blank">register</a> and receive ID number for your web presentation.
 2.	Upload the full plugin directory into your wp-content/plugins directory.
 3.	Activate the plugin in plugins administration.
-4.	Add widget TopList.cz into your sidebar in Widgets administration.
+4.	Add widget TOPlist into your sidebar in Widgets administration.
 5.	In widget configuration, enter your ID number for toplist.cz server; eventually you can change other options. Save changes.
 
 == Frequently Asked Questions ==
