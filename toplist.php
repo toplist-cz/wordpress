@@ -2,7 +2,7 @@
 /*
 Plugin Name: TOPlist
 Description: Widget for easy integration of TOPlist.cz, popular Czech website visit statistics server.
-Version: 5.0
+Version: 5.1
 Author: TOPlist s.r.o., Honza Skypala
 Author URI: https://o.toplist.cz/dokumentace/
 License: MIT license
@@ -12,13 +12,11 @@ if(!class_exists('WP_Http'))
 		include_once(ABSPATH . WPINC. '/class-http.php');
 
 class TopList_CZ_Widget extends WP_Widget {
-	const version = "4.2";
-	const use_cache = true;
-	const cache_expiry = 900;  // 15 minutes * 60 seconds
+	const version = "5.1";
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_toplist_cz',
-												'description' => __('Integrates TOPList.cz statistics into your blog', 'toplistcz') );
+		'description' => __('Integrates TOPlist statistics into your blog', 'toplistcz') );
 		$control_ops = array('width' => 380, 'height' => 500);
 		$toplist_title = 'TOPlist.cz';
 		$config = self::config();
@@ -393,14 +391,9 @@ class TopList_CZ_Widget extends WP_Widget {
 	function draw_dashboard_widget() {
 		wp_enqueue_script("toplist-cz-admin");
 		wp_enqueue_script("flot");
-		$stats = get_option('toplist-cache-' . date('Y-m-d'), false);
-		$cache_valid = self::use_cache && is_array($stats) && time() <= $stats['local_timestamp'] + self::cache_expiry;
-		echo '<span class="spinner"' . ($cache_valid ? ' style="display:none;"' : '') . '></span>';
+		echo '<span class="spinner"></span>';
 		echo '<span class="erroricon" style="display:none;"></span>';
 		echo '<div class="content">';
-		if ($cache_valid) {
-			echo self::dashboard_html($stats);
-		}
 		echo '</div>';
 	}
 
@@ -536,38 +529,28 @@ class TopList_CZ_Widget extends WP_Widget {
 
 	private function dashboard_content() {
 		$stats = false;
-		if (self::use_cache) {
-			$stats = get_option('toplist-cache-' . date('Y-m-d'), false);
-			if (is_array($stats) && time() > $stats['local_timestamp'] + self::cache_expiry) // cache data still valid
-				$stats = false;
-		}
-		if (!$stats) {
-			$html = self::get_toplist_stats_html();
-			if (is_wp_error($html)) {
-				switch ($html->get_error_code()) {
-					case 'wrong_toplist_password':
-						return array('success' => false,
-												 'html'    => self::password_form());
-					default:
-						return array('success' => false,
-												 'html'    => $html->get_error_message(),
-												 'reload'  => true);
-				}
-			}
-	
-			$stats = self::extract_toplist_stats($html);
-			if (self::use_cache) {
-				update_option('toplist-cache-' . date('Y-m-d', $stats['local_timestamp']), $stats);
+		$html = self::get_toplist_stats_html();
+		if (is_wp_error($html)) {
+			switch ($html->get_error_code()) {
+				case 'wrong_toplist_password':
+					return array('success' => false,
+						 'html'    => self::password_form());
+				default:
+					return array('success' => false,
+						 'html'    => $html->get_error_message(),
+						 'reload'  => true);
 			}
 		}
+
+		$stats = self::extract_toplist_stats($html);
 		return array('success' => true,
-								 'html'    => self::dashboard_html($stats));
+			'html'    => self::dashboard_html($stats));
 	}
-	
+
 	private function Ymd_from_toplist_timestamp($timestamp) {
 		return substr($timestamp, 6, 4) . '-' . substr($timestamp, 3, 2) . '-' . substr($timestamp, 0, 2);
 	}
-	
+
 	private function table_2_columns($data, $rows = 5) {
 		$base = get_option("siteurl");
 		$base = str_replace("http://", "", $base);
@@ -583,7 +566,7 @@ class TopList_CZ_Widget extends WP_Widget {
 			}
 		return $return; 
 	}
-	
+
 	private function dashboard_html($stats = false) {
 		$return = ''
 						. '<data id="toplist_stats" value="' . base64_encode(json_encode($stats)) . '"></data>'
@@ -637,7 +620,7 @@ class TopList_CZ_Widget extends WP_Widget {
 									);
 		}
 	}
-	
+
 	private function extract_toplist_stats($html) {
 		$return = array();
 		$return['navstevy_za_mesic'] = array();
@@ -802,7 +785,7 @@ class TopList_CZ_Widget extends WP_Widget {
 				return "edit_theme_options"; // we require the highest role as default
 		}
 	}
-	
+
 	private function salt() {
 		static $salt = '';
 		if ($salt == '') {
@@ -818,11 +801,11 @@ class TopList_CZ_Widget extends WP_Widget {
 		}
 		return $salt;
 	}
-	
+
 	private function encrypt($text) {
 		return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, self::salt(), $text, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));
 	}
-	
+
 	private function decrypt($text) {
 		return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, self::salt(), base64_decode($text), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
 	}
