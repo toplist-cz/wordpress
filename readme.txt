@@ -4,8 +4,8 @@ Donate link: https://www.toplist.cz
 Tags: toplist, toplist.cz, web, pages, analytics, statistics, widget
 Requires at least: 4.3
 Requires PHP: 5.2
-Tested up to: 5.1
-Stable tag: 5.0
+Tested up to: 5.2.4
+Stable tag: 5.1
 
 TOPlist.cz is a popular web analytics service in Czech Republic. This plugin is for easy integration of your WordPress blog into this service.
 
@@ -69,11 +69,13 @@ eventually for hiding the widget:
 2. Dashboard widget
 
 == Upgrade Notice ==
-= 5.0 =
-* Using TOPlist REST API (https://profi.toplist.cz/api/) instead of parsing web pages (which didn't work because of web changes)
+= 5.1 =
+* Direct requests to API without caching
 
 == Changelog ==
 
+= 5.1 =
+* Direct requests to API without caching
 = 5.0 =
 * Using TOPlist REST API (https://profi.toplist.cz/api/) instead of parsing web pages (which didn't work because of web changes)
 * licence changed to MIT
@@ -105,7 +107,7 @@ eventually for hiding the widget:
 
 MIT License
 
-Copyright (c) 2019 toplist
+Copyright (c) 2019 TOPlist s.r.o.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

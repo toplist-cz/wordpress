@@ -624,7 +624,7 @@ class TopList_CZ_Widget extends WP_Widget {
 	private function extract_toplist_stats($html) {
 		$return = array();
 		$return['navstevy_za_mesic'] = array();
-		$return['navstevy_za_mesic']['mesic']     = 'leden';
+		$return['navstevy_za_mesic']['mesic']     = '';
 		$return['navstevy_za_mesic']['label']     = 'Návštěvy za měsíc:';
 		$data = json_decode($html, true);
 		//$return['navstevy_za_mesic']['label']     = print_r($data);
