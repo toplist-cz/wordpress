@@ -63,6 +63,7 @@ class TopList_CZ_Widget extends WP_Widget {
 				'depth'      => '',
 				'pagetitle'  => '',
 				'seccode'    => 0,
+				'start'      => 0,
 				'admindsbl'  => '0',
 				'adminlvl'   => 'administrator',
 				'serverkey'  => ''
@@ -78,6 +79,7 @@ class TopList_CZ_Widget extends WP_Widget {
 			echo $before_widget.$before_title.$title.$after_title;
 			
 			$security = intval($toplist_seccode) > 0 ? "&seed=" . $toplist_seccode : "";
+			$start = intval($toplist_start) > 0 ? "&start=" . $toplist_start : "";
 
 			if ($toplist_logo=='text') {
 				echo '<ilayer left=1 top=1 src="https://'.$toplist_server.'/count.asp?id='.$toplist_id.'&logo=text' . $security . '" width="88" heigth="31"><iframe src="https://'.$toplist_server.'/count.asp?id='.$toplist_id.'&logo=text' . $security . '" scrolling=no style="width: 88px;height: 31px;"></iframe></ilayer>';
@@ -127,7 +129,7 @@ class TopList_CZ_Widget extends WP_Widget {
 				}
 				$as = '<a href="'.$link.'" target="_top">';
 				$ae = '</a>';
-				$imgurl = $imgsrc.'id='.$toplist_id . $security;
+				$imgurl = $imgsrc.'id='.$toplist_id . $security . $start;
 				$imgs = '<img src="'.$imgurl;
 				$imge = '" alt="TOPlist" border="0" width="'.$width.'" height="'.$height.'" />';
 				$img = $imgs.$imge;
@@ -168,7 +170,8 @@ class TopList_CZ_Widget extends WP_Widget {
 				'admindsbl',
 				'adminlvl',
 				'display',
-				'serverkey'
+				'serverkey',
+				'start'
 			) as $option) {
 				$instance[$option] = strip_tags(stripslashes($new_instance[$option]));
 		}
@@ -190,6 +193,7 @@ class TopList_CZ_Widget extends WP_Widget {
 				'depth'      => '',
 				'pagetitle'  => '',
 				'seccode'    => 0,
+				'start'      => 0,
 				'admindsbl'  => '0',
 				'adminlvl'   => 'administrator',
 				'display'    => 'default',
@@ -270,6 +274,9 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo ' <label for="' . $this->get_field_name('pagetitle') . '">';
 		_e('Record webpage title', 'toplistcz');
 		echo '</label><br />';
+		echo '<label for="' . $this->get_field_name('start') . '">' . __('Start:', 'toplistcz') . '</label> ';
+		echo '<input id="' . $this->get_field_id('start') . '" name="' . $this->get_field_name('start') . '" type="number" size="6" min="0" value="' . $toplist_start . '" />';
+		echo '[<span title="'. __('Initial counter value', 'toplistcz').'" style="font-size:x-small; cursor:help;">' . __('what is this?', 'toplistcz') . '</span>]<br />';
 		echo '<label for="' . $this->get_field_name('seccode') . '">' . __('Security code:', 'toplistcz') . '</label> ';
 		echo '<input id="' . $this->get_field_id('seccode') . '" name="' . $this->get_field_name('seccode') . '" type="number" min="0" max="200" value="' . $toplist_seccode . '" />';
 		echo '[<a href="https://o.toplist.cz/dokumentace/tipy-a-triky/#bezpecnostni-kod" target="_blank"><span style="font-size:x-small">' . __('what is this?', 'toplistcz') . '</span></a>]';
