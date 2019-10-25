@@ -2,7 +2,7 @@
 Contributors: toplist, honza.skypala
 Donate link: https://www.toplist.cz
 Tags: toplist, toplist.cz, web, pages, analytics, statistics, widget
-Requires at least: 4.3
+Requires at least: 4.6
 Requires PHP: 5.2
 Tested up to: 5.2.4
 Stable tag: 5.1
