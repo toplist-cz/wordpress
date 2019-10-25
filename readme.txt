@@ -10,26 +10,10 @@ Stable tag: 5.1
 TOPlist.cz is a popular web analytics service in Czech Republic. This plugin is for easy integration of your WordPress blog into this service.
 
 == Description ==
-
-For English, please see below.
   
-<strong>Czech:</strong> Tento plug-in Vám zajistí snadné použití statistické služby TOPlist.cz ve vašem blogu provozovaném na systému WordPress. Plug-in přidá nový widget (nazvaný TOPlist) a jeho umístěním na stránku (do sidebaru) zajistíte automatické používání služby. Autoři webových stránek běžně zařazují kód pro používání služby TopList.cz do šablony vzhledu - ovšem moje řešení pomocí pluginu/widgetu zajistí používání služby bez ohledu na použitou šablonu - můžete šablony vzhledu přepínat dle libosti a statistiky jsou stále zajištěny. K dispozici je plná konfigurace služby (např. vzhled ikony, detaily sledování apod.).
-
-<strong>English:</strong> This plug-in allows for easy integration of web statistics service TOPlist.cz into your blog run by WordPress. Plug-in adds a new widget (called TOPlist) to WordPress and by placing the widget on your page (sidebar) you integrate TopList.cz into your blog. It is common to put the code for such service into the theme template, but my solution utilizing it as a widget allows to run the statistics regardless of the theme used - you can switch the themes and it works all the time. The widget contains complete configuration (displayed icon, detailed analytics etc.).
+This plug-in allows for easy integration of web statistics service TOPlist.cz into your blog run by WordPress. Plug-in adds a new widget (called TOPlist) to WordPress and by placing the widget on your page (sidebar) you integrate TopList.cz into your blog. It is common to put the code for such service into the theme template, but my solution utilizing it as a widget allows to run the statistics regardless of the theme used - you can switch the themes and it works all the time. The widget contains complete configuration (displayed icon, detailed analytics etc.).
 
 == Installation ==
-
-For English, see below.
-
-<strong>Czech:</strong>
-
-1.	Pokud ještě nemáte svou registraci na serveru toplist.cz, pak je zapotřebí se <a href="https://www.toplist.cz/register/" target="_blank">zaregistrovat</a> a získat ID pro své webové stránky.
-2.	Nahrajte kompletní adresář pluginu do wp-content/plugins.
-3.	Aktivujte plugin TOPlist v administraci plug-inů.
-4.	Přidejte widget TOPlist v administraci Vzhled->Widgety do postranního panelu.
-5.	V konfiguraci widgetu zadejte své ID pro server toplist.cz, případně zvolte další volby. Uložte změny.
-
-<strong>English:</strong>
 
 1.	If you don't have a toplist.cz server registration yet, you have to <a href="https://www.toplist.cz/register/" target="_blank">register</a> and receive ID number for your web presentation.
 2.	Upload the full plugin directory into your wp-content/plugins directory.
@@ -38,20 +22,6 @@ For English, see below.
 5.	In widget configuration, enter your ID number for toplist.cz server; eventually you can change other options. Save changes.
 
 == Frequently Asked Questions ==
-
-<strong>Czech:</strong>
-
-Od verze 3.2 widget umožňuje také nastavit, jestli se má obrázek (logo) ve sloupci vycentrovat nebo skrýt. To by sice mělo být standardně řešeno použitou šablonou skrz css kaskádový styl, nicméně někteří uživatelé nemusí být dostatečně zkušení v editaci kaskádových stylů, případně nemusejí mít možnost šablonu změnit, proto jsem do widgetu přidal možnost nastavit to přímo v něm.
-
-Pokud chcete nastavit zobrazení widgetu ve vaší šabloně (tak jak to má být), pak do ní přidejte pro vycentrování:
-
-<code>.widget_toplist_cz {text-align:center}</code>
-
-případně pro skrytí zobrazení:
-
-<code>.widget_toplist_cz {display:none}</code>
-
-<strong>English:</strong>
 
 Since version 3.2 you can also specify how to display the widget (logo) in the sidebar, you can center or hide it. This should normally be done via the theme css, but some users are not skilled in editing css styles or they might not have permission to change it, so I have added such option to specify the display directly in the widget config.
 
@@ -65,10 +35,11 @@ eventually for hiding the widget:
 
 == Screenshots ==
 
-1. Konfigurace widgetu / widget configuration
+1. Widget configuration
 2. Dashboard widget
 
 == Upgrade Notice ==
+
 = 5.1 =
 * Direct requests to API without caching
 
