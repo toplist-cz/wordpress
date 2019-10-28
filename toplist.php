@@ -2,11 +2,10 @@
 /*
 Plugin Name: TOPlist
 Description: Widget for easy integration of TOPlist.cz, popular Czech website visit statistics server.
-Version: 5.1
+Version: 5.1.1
 Author: TOPlist s.r.o., Honza Skypala
 Author URI: https://o.toplist.cz/dokumentace/
 License: MIT license
-Domain Path: /lang
 */
 
 if(!class_exists('WP_Http'))
@@ -17,7 +16,7 @@ class TopList_CZ_Widget extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_toplist_cz',
-		'description' => __('Integrates TOPlist statistics into your blog') );
+		'description' => __('Integrates TOPlist statistics into your blog', 'toplist') );
 		$control_ops = array('width' => 380, 'height' => 500);
 		$toplist_title = 'TOPlist.cz';
 		$config = self::config();
@@ -207,7 +206,7 @@ class TopList_CZ_Widget extends WP_Widget {
 
 		// server choice input
 		echo '<table><tr><td><label for="' . $this->get_field_name('server') . '">';
-		_e('Server');
+		_e('Server', 'toplist');
 		echo ': </label></td>';
 		echo '<td><input id="' . $this->get_field_id('server') . '" name="' . $this->get_field_name('server') . '" type="radio" value="toplist.cz"'.($toplist_server=='toplist.cz'?' checked':'').'>toplist.cz</input></td>';
 		echo '</tr><tr>';
@@ -217,12 +216,12 @@ class TopList_CZ_Widget extends WP_Widget {
 
 		// toplist ID input
 		echo '<p><label for="' . $this->get_field_name('id') . '">'.str_replace('toplist', 'TOPlist', $toplist_server).' ID: </label><input id="' . $this->get_field_id('id') . '" name="' . $this->get_field_name('id') . '" type="text" value="'.intval($toplist_id).'" size="7" /><input id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="hidden" value="'.$toplist_title.'" /></p>'."\n";
-		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('Your ID on <a href="https://www.%server%" target="_blank">www.%server%</a> server. If you don\'t have one yet, please <a href="https://www.%server%/register/" target="_blank">register</a>.')).'</em></p><hr />';
+		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('Your ID on <a href="https://www.%server%" target="_blank">www.%server%</a> server. If you don\'t have one yet, please <a href="https://www.%server%/register/" target="_blank">register</a>.', 'toplist')).'</em></p><hr />';
 
 		// logo selection
 		echo '<table><tr>';
 		echo '<td><label for="' . $this->get_field_name('logo') . '">';
-		_e('Logo');
+		_e('Logo', 'toplist');
 		echo ':&nbsp;</label></td>';
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value=""'.($toplist_logo==''?' checked':'').' /></td><td><img src="https://www.toplist.cz/img/logo.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
@@ -232,7 +231,7 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo "</tr><tr><td></td>";
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="3"'.($toplist_logo=='3'?' checked':'').' /></td><td><img src="https://www.toplist.cz/img/logo3.gif" width="88" height="31" /></td>';
 		echo '<td>&nbsp;</td>';
-		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="blank"'.($toplist_logo=='blank'?' checked':'').' /></td><td style="text-align: center">'.__('nothing').'</td>';
+		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . '" type="radio" value="blank"'.($toplist_logo=='blank'?' checked':'').' /></td><td style="text-align: center">'.__('nothing', 'toplist').'</td>';
 		echo '<td>&nbsp;</td>';
 		echo '<td><input id="' . $this->get_field_id('logo') . '" name="' . $this->get_field_name('logo') . ' "type="radio" value="text"'.($toplist_logo=='text'?' checked':'').' /></td><td style="text-align: center"><font size ="2"><b>867314</b><br /><font size="1"><a href="https://www.'.$toplist_server.'" target="_top"><b>www.'.$toplist_server.'<b></a></font></td>';
 		echo "</tr><tr><td></td>";
@@ -249,58 +248,58 @@ class TopList_CZ_Widget extends WP_Widget {
 
 		// display
 		echo '<p><label for="' . $this->get_field_name('display') . '">';
-		_e('Display');
+		_e('Display', 'toplist');
 		echo ': </label>';
 		echo '<select id="' . $this->get_field_id('display') . '" name="' . $this->get_field_name('display') . '">';
-		echo '<option value="default"' . ($toplist_display=='default'?' selected':'') . '>' . __('Default (specified by css of your theme)') . '</option>';
-		echo '<option value="center"' . ($toplist_display=='center'?' selected':'') . '>' . __('Center (enforced)') . '</option>';
-		echo '<option value="hidden"' . ($toplist_display=='hidden'?' selected':'') . '>' . __('Hidden (enforced)') . '</option>';
+		echo '<option value="default"' . ($toplist_display=='default'?' selected':'') . '>' . __('Default (specified by css of your theme)', 'toplist') . '</option>';
+		echo '<option value="center"' . ($toplist_display=='center'?' selected':'') . '>' . __('Center (enforced)', 'toplist') . '</option>';
+		echo '<option value="hidden"' . ($toplist_display=='hidden'?' selected':'') . '>' . __('Hidden (enforced)', 'toplist') . '</option>';
 		echo '</select>';
 		echo '</p><hr />';
 
 		// monitoring details settings
 		echo '<p><input id="' . $this->get_field_id('referrer') . '" name="' . $this->get_field_name('referrer') . '" type="checkbox" '.($toplist_referrer!=''?'checked ':'').' />';
 		echo ' <label for="' . $this->get_field_name('referrer') . '">';
-		_e('Monitor where visitors came from');
+		_e('Monitor where visitors came from', 'toplist');
 		echo '</label><br />';
 		echo '<input id="' . $this->get_field_id('resolution') . '" name="' . $this->get_field_name('resolution') . '" type="checkbox" '.($toplist_resolution!=''?'checked ':'').' />';
 		echo ' <label for="' . $this->get_field_name('resolution') . '">';
-		_e('Monitor browser graphical resolution');
+		_e('Monitor browser graphical resolution', 'toplist');
 		echo '</label><br />';
 		echo '<input id="' . $this->get_field_id('depth') . '" name="' . $this->get_field_name('depth') . '" type="checkbox" '.($toplist_depth!=''?'checked ':'').' />';
 		echo ' <label for="' . $this->get_field_name('depth') . '">';
-		_e('Monitor color depth');
+		_e('Monitor color depth', 'toplist');
 		echo '</label><br />';
 		echo '<input id="' . $this->get_field_id('pagetitle') . '" name="' . $this->get_field_name('pagetitle') . '" type="checkbox" '.($toplist_pagetitle!=''?'checked ':'').' />';
 		echo ' <label for="' . $this->get_field_name('pagetitle') . '">';
-		_e('Record webpage title');
+		_e('Record webpage title', 'toplist');
 		echo '</label><br />';
-		echo '<label for="' . $this->get_field_name('start') . '">' . __('Start:') . '</label> ';
+		echo '<label for="' . $this->get_field_name('start') . '">' . __('Start:', 'toplist') . '</label> ';
 		echo '<input id="' . $this->get_field_id('start') . '" name="' . $this->get_field_name('start') . '" type="number" size="6" min="0" value="' . $toplist_start . '" />';
-		echo '[<span title="'. __('Initial counter value').'" style="font-size:x-small; cursor:help;">' . __('what is this?') . '</span>]<br />';
-		echo '<label for="' . $this->get_field_name('seccode') . '">' . __('Security code:') . '</label> ';
+		echo '[<span title="'. __('Initial counter value', 'toplist').'" style="font-size:x-small; cursor:help;">' . __('what is this?', 'toplist') . '</span>]<br />';
+		echo '<label for="' . $this->get_field_name('seccode') . '">' . __('Security code:', 'toplist') . '</label> ';
 		echo '<input id="' . $this->get_field_id('seccode') . '" name="' . $this->get_field_name('seccode') . '" type="number" min="0" max="200" value="' . $toplist_seccode . '" />';
-		echo '[<a href="https://o.toplist.cz/dokumentace/tipy-a-triky/#bezpecnostni-kod" target="_blank"><span style="font-size:x-small">' . __('what is this?') . '</span></a>]';
+		echo '[<a href="https://o.toplist.cz/dokumentace/tipy-a-triky/#bezpecnostni-kod" target="_blank"><span style="font-size:x-small">' . __('what is this?', 'toplist') . '</span></a>]';
 		echo '</p><hr />';
 
 		// hyperlink settings
 		echo '<table><tr><td><label for="' . $this->get_field_name('link') . '">';
-		_e('Link');
+		_e('Link', 'toplist');
 		echo ': </label></td>';
 		echo '<td><input id="' . $this->get_field_id('link') . '" name="' . $this->get_field_name('link') . '" type="radio" value="homepage"'.($toplist_link=='homepage'?' checked':'').'>'.$toplist_server.'</input></td>';
 		echo '</tr><tr>';
 		echo '<td></td>';
-		echo '<td><input id="' . $this->get_field_id('link') . '" name="' . $this->get_field_name('link') . '" type="radio" type="radio" value="stats"'.($toplist_link=='stats'?' checked':'').'>'.__('Detailed statistics').'</input></td>';
+		echo '<td><input id="' . $this->get_field_id('link') . '" name="' . $this->get_field_name('link') . '" type="radio" type="radio" value="stats"'.($toplist_link=='stats'?' checked':'').'>'.__('Detailed statistics', 'toplist').'</input></td>';
 		echo '</tr></table>';
 		echo '<hr />';
 
 		// Statistics RESP API password
-		echo '<p><label for="' . $this->get_field_name('serverkey') . '">'.__('Statistics password').': </label><input id="' . $this->get_field_id('serverkey') . '" name="' . $this->get_field_name('serverkey') . '" type="text" value="'.$toplist_serverkey.'" size="7" /></p>'."\n";
-		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('To show statistics right in Wordpress dashboard enter <a href="https://profi.%server%/serverKey" target="_blank">one time password</a>.')).'</em></p><hr />';
+		echo '<p><label for="' . $this->get_field_name('serverkey') . '">'.__('Statistics password', 'toplist').': </label><input id="' . $this->get_field_id('serverkey') . '" name="' . $this->get_field_name('serverkey') . '" type="text" value="'.$toplist_serverkey.'" size="7" /></p>'."\n";
+		echo '<p style="margin: 5px 10px;"><em>'.str_replace('%server%', $toplist_server, __('To show statistics right in Wordpress dashboard enter <a href="https://profi.%server%/serverKey" target="_blank">one time password</a>.', 'toplist')).'</em></p><hr />';
 
 		// tracking admin users
 		echo '<table><tr><td width="190px"><label for="' . $this->get_field_name('admindsbl') . '">';
-		_e('WordPress admin logging');
+		_e('WordPress admin logging', 'toplist');
 		echo ': </label></td>';
 		echo '<td>';
 
@@ -309,12 +308,12 @@ class TopList_CZ_Widget extends WP_Widget {
 		echo "<option value='0'";
 		if($toplist_admindsbl == '0')
 			echo " selected='selected'";
-		echo ">" . __('Enabled') . "</option>\n";
+		echo ">" . __('Enabled', 'toplist') . "</option>\n";
 
 		echo "<option value='1'";
 		if($toplist_admindsbl == '1')
 			echo" selected='selected'";
-		echo ">" . __('Disabled') . "</option>\n";
+		echo ">" . __('Disabled', 'toplist') . "</option>\n";
 
 		echo "</select>\n<br />";
 		echo '</td></tr><tr><td colspan="2">';
@@ -330,7 +329,7 @@ class TopList_CZ_Widget extends WP_Widget {
 		$roles_combo .= "</select>";
 
 		?>
-		<p style="margin: 5px 10px;"><em><?php printf(__('Disabling this option will prevent visits from all logged-in WordPress administrators from showing up on your %1$s reports. Eventually, all logged-in users with role %2$s or higher are prevented from being logged by %1$s. Your role is %3$s.'), str_replace('toplist', 'TOPlist', $toplist_server), $roles_combo, _x(ucfirst(wp_get_current_user()->roles[0]), "User role")); ?></em></p>
+		<p style="margin: 5px 10px;"><em><?php printf(__('Disabling this option will prevent visits from all logged-in WordPress administrators from showing up on your %1$s reports. Eventually, all logged-in users with role %2$s or higher are prevented from being logged by %1$s. Your role is %3$s.', 'toplist'), str_replace('toplist', 'TOPlist', $toplist_server), $roles_combo, _x(ucfirst(wp_get_current_user()->roles[0]), "User role")); ?></em></p>
 		<?php
 		echo '</td></tr></table>';
 	}
@@ -377,7 +376,7 @@ class TopList_CZ_Widget extends WP_Widget {
 
 		if (!$config)  // no config found => no dashboard widget
 			return;
-		if ($config['title'] == sprintf(__(self::_not_found_string), $config['id']))
+		if ($config['title'] == sprintf(__(self::_not_found_string, 'toplist'), $config['id']))
 			return;
 		if (!in_array(get_option('toplist_cz_dashboard_widget_user_level', 'administrator'), $user->roles))
 			return;
@@ -493,19 +492,19 @@ class TopList_CZ_Widget extends WP_Widget {
 		$body = $http_result['body'];
 
 		if (strpos($body, '<html>Nespr') !== false)
-			return new WP_Error('wrong_toplist_password', __( "Wrong or missing password to TOPlist.cz account"));
+			return new WP_Error('wrong_toplist_password', __( "Wrong or missing password to TOPlist.cz account", 'toplist'));
 
 		return $body;
 	}
 
 	private function password_form() {
 		$config = self::config();
-		$msg = __('For displaying statistics, you must enter password to your TOPlist.cz account.');
+		$msg = __('For displaying statistics, you must enter password to your TOPlist.cz account.', 'toplist');
 		if ($config['server'] == 'toplist.sk')
 			$msg = preg_replace('/(toplist)\.cz/i', '\1.sk', $msg);
-		$id_label = __('ID');
-		$pw_label = __('Password');
-		$button = __('Save');
+		$id_label = __('ID', 'toplist');
+		$pw_label = __('Password', 'toplist');
+		$button = __('Save', 'toplist');
 		 $ajax_nonce = wp_create_nonce("toplist_dashboard_password");
 
 		return "<p>$msg</p><form id=\"toplist_password_form\"><span><label for=\"toplist_id\">$id_label: </label><input type=\"text\" id=\"toplist_id\" name=\"id\" value=\"{$config['title']}\" disabled /></span><span><label for=\"toplist_password\">$pw_label: </label><input type=\"password\" id=\"toplist_password\" name=\"password\" /><input type=\"button\" value=\"$button\" id=\"toplist_password_submit\" /><span class=\"spinner\"></span></span><input type=\"hidden\" name=\"_wpnonce\" id=\"toplist_password_nonce\" value=\"$ajax_nonce\" /></form>";
@@ -820,6 +819,5 @@ class TopList_CZ_Widget extends WP_Widget {
 }
 
 register_activation_hook(__FILE__, 'TopList_CZ_Widget::activate');  // activation of plugin
-add_action('init', create_function('', 'load_plugin_textdomain("toplist", false, basename(dirname(__FILE__)) . "/lang/");'));
 add_action('widgets_init', create_function('', 'register_widget("TopList_CZ_Widget");'));
 ?>
