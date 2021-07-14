@@ -5,7 +5,7 @@ Tags: toplist, toplist.cz, web, pages, analytics, statistics, widget
 Requires at least: 4.6
 Requires PHP: 5.2
 Tested up to: 5.7.2
-Stable tag: 5.1.1
+Stable tag: 5.1.2
 
 TOPlist.cz is a popular web analytics service in Czech Republic. This plugin is for easy integration of your WordPress blog into this service.
 
@@ -40,11 +40,13 @@ eventually for hiding the widget:
 
 == Upgrade Notice ==
 
-= 5.1.1 =
-* Localization fix
+= 5.1.2 =
+* PHP 8.0 compatibility
 
 == Changelog ==
 
+= 5.1.2 =
+* PHP 8.0 compatibility
 = 5.1.1 =
 * Localization fix
 = 5.1 =

@@ -2,7 +2,7 @@
 /*
 Plugin Name: TOPlist
 Description: Widget for easy integration of TOPlist.cz, popular Czech website visit statistics server.
-Version: 5.1.1
+Version: 5.1.2
 Author: TOPlist s.r.o., Honza Skypala
 Author URI: https://o.toplist.cz/dokumentace/
 License: MIT license
@@ -817,7 +817,9 @@ class TopList_CZ_Widget extends WP_Widget {
 		return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, self::salt(), base64_decode($text), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
 	}
 }
-
+function registerTopList_CZ_Widget() {
+    return register_widget("TopList_CZ_Widget");
+}
 register_activation_hook(__FILE__, 'TopList_CZ_Widget::activate');  // activation of plugin
-add_action('widgets_init', create_function('', 'register_widget("TopList_CZ_Widget");'));
+add_action('widgets_init', 'registerTopList_CZ_Widget');
 ?>
