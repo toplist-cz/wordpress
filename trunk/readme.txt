@@ -4,7 +4,7 @@ Donate link: https://www.toplist.cz
 Tags: toplist, toplist.cz, web, pages, analytics, statistics, widget
 Requires at least: 4.6
 Requires PHP: 5.2
-Tested up to: 5.7.2
+Tested up to: 6.4.1
 Stable tag: 5.1.2
 
 TOPlist.cz is a popular web analytics service in Czech Republic. This plugin is for easy integration of your WordPress blog into this service.
